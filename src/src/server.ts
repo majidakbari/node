@@ -4,6 +4,9 @@ import { applyMiddleware, applyRoutes } from "./utils";
 import middleware from "./middleware";
 import errorHandlers from "./middleware/errorHandlers";
 import routes from "./services";
+import dotenv from "dotenv";
+
+dotenv.config({path: __dirname + '/../../.env'});
 
 process.on("uncaughtException", e => {
     console.log(e);
@@ -20,7 +23,8 @@ applyMiddleware(middleware, router);
 applyRoutes(routes, router);
 applyMiddleware(errorHandlers, router);
 
-const { PORT = 3000 } = process.env;
+const PORT: string | undefined = process.env.NODE_PORT;
+console.log(PORT,{path: __dirname + '/../../.env'});
 const server = http.createServer(router);
 
 server.listen(PORT, () =>

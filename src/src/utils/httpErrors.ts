@@ -9,14 +9,18 @@ export abstract class HTTPClientError extends Error {
      */
     protected constructor(message: object | string) {
         if (message instanceof Object) {
-            super(JSON.stringify({"error" : message}));
+            super(JSON.stringify(message));
         } else {
-            super(message);
+            super(JSON.stringify({
+                "error" : message
+            }));
         }
         this.name = this.constructor.name;
+
         Error.captureStackTrace(this, this.constructor);
     }
 }
+
 export class HTTP400Error extends HTTPClientError {
 
     readonly statusCode = 400;
