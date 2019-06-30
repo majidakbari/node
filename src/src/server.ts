@@ -3,7 +3,7 @@ import express from "express";
 import { applyMiddleware, applyRoutes } from "./utils";
 import middleware from "./middleware";
 import errorHandlers from "./middleware/errorHandlers";
-import routes from "./services";
+import routes from "./route";
 import dotenv from "dotenv";
 
 dotenv.config({path: __dirname + '/../../.env'});
