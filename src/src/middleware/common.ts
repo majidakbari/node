@@ -1,4 +1,4 @@
-import { Router } from "express";
+import {NextFunction, Request, Response, Router} from "express";
 import cors from "cors";
 import parser from "body-parser";
 import compression from "compression";
@@ -16,7 +16,7 @@ export const handleCompression = (router: Router) => {
 };
 
 export const handleResponseHeaders = (router: Router) => {
-    router.use((req, res, next) => {
+    router.use((req: Request, res: Response, next: NextFunction) => {
         res.append('Content-Type', 'application/json');
         next();
     });
