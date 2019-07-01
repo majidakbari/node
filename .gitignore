@@ -1,5 +1,5 @@
-src/node_modules/
+app/node_modules/
 .idea
-src/dist/
+app/dist/
 .env
 
