@@ -3,9 +3,9 @@ import {userRepository} from "../../../repository/userRepository";
 
 
 /**
- * @class registerUser
+ * @class registerUserAction
  */
-export class registerUser {
+export class registerUserAction {
 
     /**
      * @property userRepository

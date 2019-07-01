@@ -1,5 +1,5 @@
 import {Request, Response} from "express";
-import {registerUser} from "../http/controllers/user/registerUser";
+import {registerUserAction} from "../http/controllers/user/registerUserAction";
 import {userRepository} from "../repository/userRepository";
 
 export default [
@@ -7,7 +7,7 @@ export default [
         path: "/user",
         method: "post",
         handler: async (req: Request, res: Response) => {
-            new registerUser(userRepository).invoke(req, res)
+            new registerUserAction(userRepository).invoke(req, res)
         }
     }
 ];
