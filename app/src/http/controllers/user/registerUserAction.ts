@@ -15,9 +15,9 @@ export class registerUserAction {
      * @param res
      */
     async invoke(req: Request, res: Response) {
-        const data = req.body;
+        let data = req.body;
         data.password = await bcrypt.hash(data.password, 10);
-        const user = await this.repo.create(data);
+        let user = await this.repo.create(data);
         user.password = undefined;
 
         return HttpSuccess(res, user, 201);
