@@ -7,4 +7,8 @@ export class userRepository {
             ...data
         });
     }
+
+    async findOneByEmail(email: String) {
+        return await userModel.findOne({'email' : email});
+    }
 }

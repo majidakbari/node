@@ -1,4 +1,3 @@
-
 export abstract class HTTPClientError extends Error {
 
     readonly statusCode!: number;
@@ -6,16 +5,13 @@ export abstract class HTTPClientError extends Error {
 
     /**
      * @param message
+     * @param details
      */
     protected constructor(message: object | string, details: Object[]) {
-        // if (message instanceof Object) {
-        //     console.log('majid va farhad ', message);
-        //     super(JSON.stringify(message));
-        // } else {
-            super(JSON.stringify({
-                "error" : message,
-                "details" : details
-            }));
+        super(JSON.stringify({
+            "error": message,
+            "details": details
+        }));
         // }
         this.name = this.constructor.name;
 

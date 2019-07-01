@@ -1,4 +1,5 @@
 import {IsDefined, IsEmail, IsString, MaxLength, MinLength} from 'class-validator';
+import {IsUserAlreadyExist} from '../../rules/uniqueUserValidationRule';
 
 class registerUserValidators {
 
@@ -11,6 +12,7 @@ class registerUserValidators {
     @IsString()
     @IsEmail()
     @MaxLength(255)
+    @IsUserAlreadyExist({'message': 'Email has already been taken'})
     public email: String | undefined;
 
     @IsDefined()
