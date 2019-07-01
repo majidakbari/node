@@ -1,11 +1,13 @@
 import {registerDecorator, ValidationOptions, ValidatorConstraint, ValidatorConstraintInterface, ValidationArguments} from "class-validator";
-import userModel from "../entity/user";
+import {userRepository} from "../repository/userRepository";
 
 @ValidatorConstraint({ async: true })
 export class IsUserAlreadyExistConstraint implements ValidatorConstraintInterface {
 
     validate(userName: any, args: ValidationArguments) {
-        return userModel.findOne({'email' : userName}).then(user => {
+        const repo = new userRepository();
+
+        return repo.findOneByEmail(userName).then(user => {
             if (user) return false;
             return true;
         });
