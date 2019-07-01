@@ -9,16 +9,6 @@ import {connectToMongo} from "./database/mongodb";
 
 dotenv.config({path: __dirname + '/../../.env'});
 
-process.on("uncaughtException", e => {
-    console.log(e);
-    process.exit(1);
-});
-
-process.on("unhandledRejection", e => {
-    console.log(e);
-    process.exit(1);
-});
-
 const router = express();
 
 applyMiddleware(middleware, router);
