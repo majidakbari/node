@@ -2,6 +2,7 @@ import { Request, Response } from "express";
 import {userRepository} from "../../../repository/userRepository";
 import * as bcrypt from 'bcrypt';
 import {HTTP422Error} from "../../../utils/httpErrors";
+import {HttpSuccess} from "../../../utils/httpSuccess";
 
 /**
  * @class registerUserAction
@@ -21,7 +22,8 @@ export class registerUserAction {
         data.password = await bcrypt.hash(data.password, 10);
         const user = await this.repo.create(data);
         user.password = undefined;
-        return res.send(user);
+
+        return HttpSuccess(res, user, 201);
     }
 
 

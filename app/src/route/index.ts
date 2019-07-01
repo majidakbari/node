@@ -11,7 +11,7 @@ export default [
         handler: [
             validationMiddleware(registerUserValidators),
             async (req: Request, res: Response) => {
-                new registerUserAction(new userRepository()).invoke(req, res)
+               new registerUserAction(new userRepository).invoke(req, res);
             }
         ]
     }
