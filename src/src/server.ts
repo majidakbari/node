@@ -5,6 +5,7 @@ import middleware from "./middleware";
 import errorHandlers from "./middleware/errorHandlers";
 import routes from "./route";
 import dotenv from "dotenv";
+import {connectToMongo} from "./database/mongodb";
 
 dotenv.config({path: __dirname + '/../../.env'});
 
@@ -19,12 +20,13 @@ process.on("unhandledRejection", e => {
 });
 
 const router = express();
+
 applyMiddleware(middleware, router);
 applyRoutes(routes, router);
 applyMiddleware(errorHandlers, router);
+connectToMongo();
 
 const PORT: string | undefined = process.env.NODE_PORT;
-console.log(PORT,{path: __dirname + '/../../.env'});
 const server = http.createServer(router);
 
 server.listen(PORT, () =>

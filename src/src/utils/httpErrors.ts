@@ -30,6 +30,15 @@ export class HTTP400Error extends HTTPClientError {
     }
 }
 
+export class HTTP422Error extends HTTPClientError {
+
+    readonly statusCode = 422;
+
+    constructor(message: string | object = "Unprocessable Entity") {
+        super(message);
+    }
+}
+
 export class HTTP404Error extends HTTPClientError {
     readonly statusCode = 404;
 

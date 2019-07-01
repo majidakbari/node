@@ -22,3 +22,4 @@ export const serverError = (err: Error, res: Response, next: NextFunction) => {
         res.status(500).send(err.stack);
     }
 };
+
