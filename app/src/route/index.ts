@@ -14,6 +14,7 @@ import {createGameAction} from "../http/controllers/game/createGameAction";
 import {gameRepository} from "../repository/gameRepository";
 import {showGameAction} from "../http/controllers/game/showGameAction";
 import {listGamesAction} from "../http/controllers/game/listGamesAction";
+import {joinGameAction} from "../http/controllers/game/joinGameAction";
 
 export default [
 
@@ -90,6 +91,16 @@ export default [
         handler: [
             (req: Request, res: Response) => {
                 new showGameAction(new gameRepository(), new userRepository()).invoke(req, res);
+            }
+        ]
+    },
+    {
+        path: "/api/game/:id/join",
+        method: "post",
+        handler: [
+            authMiddleware,
+            (req: Request, res: Response) => {
+                new joinGameAction(new gameRepository()).invoke(req, res);
             }
         ]
     },

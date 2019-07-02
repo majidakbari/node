@@ -29,7 +29,6 @@ export class showGameAction {
 
             return HttpSuccess(res, result);
         } catch (e) {
-            console.log(e);
             return res.status(404).json({
                 error: "Not found",
                 details: []
