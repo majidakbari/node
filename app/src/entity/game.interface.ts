@@ -5,8 +5,10 @@ interface Game {
     target_score: number;
     winner_id: string;
     user_ids: any;
+    status: String;
     created_at: Date;
     updated_at: Date;
 }
+
 
 export default Game;

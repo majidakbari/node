@@ -9,8 +9,13 @@ import {getProfileAction} from "../http/controllers/user/getProfileAction";
 import {listUsersAction} from "../http/controllers/user/listUsersAction";
 import {updateUserAction} from "../http/controllers/user/updateUserAction";
 import updateUserValidator from "../validation/user/updateUserValidator";
+import createGameValidator from "../validation/game/createGameValidator";
+import {createGameAction} from "../http/controllers/game/createGameAction";
+import {gameRepository} from "../repository/gameRepository";
 
 export default [
+
+    //user routes
     {
         path: "/api/user",
         method: "post",
@@ -42,6 +47,18 @@ export default [
         ]
     },
     {
+        path: "/api/me",
+        method: "get",
+        handler: [
+            authMiddleware,
+            (req: Request, res: Response) => {
+                new getProfileAction(new userRepository()).invoke(req, res);
+            }
+        ]
+    },
+
+    //auth routes
+    {
         path: "/oauth/token",
         method: "post",
         handler: [
@@ -51,13 +68,18 @@ export default [
             }
         ]
     },
+
+
+    // game routes
+
     {
-        path: "/api/me",
-        method: "get",
+        path: "/api/game",
+        method: "post",
         handler: [
             authMiddleware,
+            validationMiddleware(createGameValidator),
             (req: Request, res: Response) => {
-                new getProfileAction(new userRepository()).invoke(req, res);
+                new createGameAction(new gameRepository()).invoke(req, res);
             }
         ]
     }
