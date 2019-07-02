@@ -13,6 +13,7 @@ import createGameValidator from "../validation/game/createGameValidator";
 import {createGameAction} from "../http/controllers/game/createGameAction";
 import {gameRepository} from "../repository/gameRepository";
 import {showGameAction} from "../http/controllers/game/showGameAction";
+import {listGamesAction} from "../http/controllers/game/listGamesAction";
 
 export default [
 
@@ -72,7 +73,6 @@ export default [
 
 
     // game routes
-
     {
         path: "/api/game",
         method: "post",
@@ -90,6 +90,15 @@ export default [
         handler: [
             (req: Request, res: Response) => {
                 new showGameAction(new gameRepository(), new userRepository()).invoke(req, res);
+            }
+        ]
+    },
+    {
+        path: "/api/game",
+        method: "get",
+        handler: [
+            (req: Request, res: Response) => {
+                new listGamesAction(new gameRepository(), new userRepository()).invoke(req, res);
             }
         ]
     }

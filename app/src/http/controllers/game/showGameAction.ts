@@ -48,6 +48,10 @@ export class showGameAction {
             return element.id;
         });
 
+        if (game.winner_id) {
+            users.push(game.winner_id);
+        }
+
         const result = await this.userRepo.findManyByIds(users);
 
         game.user_ids.forEach(function (value: any) {
@@ -57,6 +61,14 @@ export class showGameAction {
                 }
             })
         });
+
+        if (game.winner_id) {
+            result.forEach(function (val) {
+                if (val._id == game.winner_id) {
+                    game.winner = val;
+                }
+            })
+        }
 
         return game;
     }

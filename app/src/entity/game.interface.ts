@@ -8,7 +8,6 @@ interface Game {
     status: String;
     created_at: Date;
     updated_at: Date;
-    users: any;
 }
 
 

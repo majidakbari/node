@@ -22,6 +22,19 @@ export class gameRepository {
     async findOneById(id: string) {
         return await gameModel.findById(id);
     }
+
+    /**
+     * @param projection
+     * @param page
+     * @param perPage
+     */
+    async findAll(projection: Object, page: number = 1, perPage:number = 10){
+        return {
+            data: await gameModel.find({}, projection).limit(perPage).skip((page - 1) * perPage),
+            count: await gameModel.countDocuments({})
+        };
+    }
+
     //
     // /**
     //  * @param criteria
@@ -48,10 +61,5 @@ export class gameRepository {
     //  * @param page
     //  * @param perPage
     //  */
-    // async findAll(page: number = 1, perPage:number = 10){
-    //     return {
-    //         data: await userModel.find({}, {"_id": 1, "email": 1, "name" : 1}).limit(perPage).skip((page - 1) * perPage),
-    //         count: await userModel.countDocuments({})
-    //     };
-    // }
+
 }
