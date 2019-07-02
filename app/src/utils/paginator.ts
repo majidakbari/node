@@ -142,7 +142,7 @@ export class paginator {
         }
         let p = parseInt(perPage);
 
-        if (p < 0) {
+        if (p < 0 || p > 50) {
             p = 10;
         }
 
