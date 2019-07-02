@@ -16,12 +16,12 @@ export class gameRepository {
         });
     }
 
-    // /**
-    //  * @param email
-    //  */
-    // async findOneByEmail(email: String) {
-    //     return await userModel.findOne({'email' : email});
-    // }
+    /**
+     * @param id
+     */
+    async findOneById(id: string) {
+        return await gameModel.findById(id);
+    }
     //
     // /**
     //  * @param criteria

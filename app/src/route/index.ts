@@ -12,6 +12,7 @@ import updateUserValidator from "../validation/user/updateUserValidator";
 import createGameValidator from "../validation/game/createGameValidator";
 import {createGameAction} from "../http/controllers/game/createGameAction";
 import {gameRepository} from "../repository/gameRepository";
+import {showGameAction} from "../http/controllers/game/showGameAction";
 
 export default [
 
@@ -80,6 +81,15 @@ export default [
             validationMiddleware(createGameValidator),
             (req: Request, res: Response) => {
                 new createGameAction(new gameRepository()).invoke(req, res);
+            }
+        ]
+    },
+    {
+        path: "/api/game/:id",
+        method: "get",
+        handler: [
+            (req: Request, res: Response) => {
+                new showGameAction(new gameRepository()).invoke(req, res);
             }
         ]
     }
