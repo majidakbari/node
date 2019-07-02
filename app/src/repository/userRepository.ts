@@ -49,7 +49,7 @@ export class userRepository {
      */
     async findAll(page: number = 1, perPage:number = 10){
         return {
-            data: await userModel.find().limit(perPage).skip((page - 1) * perPage),
+            data: await userModel.find({}, {"_id": 1, "email": 1, "name" : 1}).limit(perPage).skip((page - 1) * perPage),
             count: await userModel.countDocuments({})
         };
     }
