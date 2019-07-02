@@ -56,7 +56,7 @@ export const validationMiddleware = (type: any): express.RequestHandler => {
                         }
                         return result;
                     });
-                    next(new HTTP422Error(message));
+                    return next(new HTTP422Error(message));
                 } else {
                     next();
                 }
@@ -82,7 +82,7 @@ export const authMiddleware = ((req: Request, res: Response, next: NextFunction)
     } else {
         return next(new HTTP401Error("Missing Token"));
     }
-
+    
     try {
         jwtPayload = <any>jwt.verify(token, process.env.JWT_SECRET || '');
         res.locals.jwtPayload = jwtPayload;

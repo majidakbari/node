@@ -18,7 +18,6 @@ export class getProfileAction {
      * @param res
      */
     async invoke(req: Request, res: Response) {
-        console.log('..................................................', 'controller')
 
         let user = await this.repo.findOneByEmail(req.app.get('user').email);
 

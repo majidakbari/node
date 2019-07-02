@@ -1,4 +1,5 @@
 import userModel from "../entity/user";
+import {ObjectId} from "bson";
 
 export class userRepository {
 
@@ -17,6 +18,8 @@ export class userRepository {
     }
 
     async findOneAndUpdate(id: string, postData: Object, options: Object = {}) {
-        return await userModel.findOneAndUpdate(id, postData, options);
+        return await userModel.updateOne({
+            _id: new ObjectId(id)
+        }, {"$set" : postData}, options);
     }
 }

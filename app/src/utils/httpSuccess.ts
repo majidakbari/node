@@ -7,3 +7,4 @@ export function HttpSuccess (res:Response , data: any, status: number = 200, mes
         "data" : data
     });
 }
+
