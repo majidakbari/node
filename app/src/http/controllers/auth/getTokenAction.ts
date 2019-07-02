@@ -1,14 +1,21 @@
-// import { Request, Response } from "express";
-// import {HttpSuccess} from "../../../utils/httpSuccess";
-//
-// export class getTokenAction {
-//
-//     invoke(req: Request, res: Response) {
-//         return HttpSuccess(res, [], 200);
-//     }
-// }
-//
-//
+import { Request, Response } from "express";
+import {HttpSuccess} from "../../../utils/httpSuccess";
+import * as jwt from "jwt-simple";
+import * as passport from "passport";
+import * as moment from "moment";
+import { Strategy, ExtractJwt } from "passport-jwt";
+import {userRepository} from "../../../repository/userRepository";
+
+export class getTokenAction {
+
+    constructor(private repo: userRepository) {}
+
+    invoke(req: Request, res: Response) {
+        return HttpSuccess(res, [], 200);
+    }
+}
+
+
 //
 // class Auth {
 //

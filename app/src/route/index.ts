@@ -23,7 +23,7 @@ export default [
         handler: [
             validationMiddleware(getTokenValidator),
             (req: Request, res: Response) => {
-                new getTokenAction().invoke(req, res);
+                new getTokenAction(new userRepository).invoke(req, res);
             }
         ]
     }

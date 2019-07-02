@@ -2,29 +2,18 @@ version: '3.5'
 
 services:
 
-#  ## --------------------------------------------------
-#  ## | Web Server Php7.2.8-apache and required Extensions
-#  ## --------------------------------------------------
-#  app:
-#    build:
-#      context: ./.docker-compose/app
-#      dockerfile: Dockerfile
-#      args:
-#        - WWW_DATA_USER_ID=${WWW_DATA_USER_ID}
-#    volumes:
-#      - ./src:/var/www/
-#      - ./.docker-compose/app/config/php.ini:/usr/local/etc/php/php.ini
-#    environment:
-#      - WWW_DATA_USER_ID=${WWW_DATA_USER_ID}
-#      - EXCLUDE_PORTS=443
-#    ports:
-#      - "127.0.0.1:8586:80"
-#    restart: always
-#    depends_on:
-#      - mongodb
-#    networks:
-#      - oauth_oauth_network
-#      - immiwork
+  ## --------------------------------------------------
+  ## | Web Server Php7.2.8-apache and required Extensions
+  ## --------------------------------------------------
+  app:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    ports:
+      - "127.0.0.1:9090:${NODE_PORT}"
+    restart: always
+    depends_on:
+      - mongodb
 
   ## --------------------------------------------------
   ## | Database Server (Mongo 4.0.10 )
@@ -37,49 +26,3 @@ services:
     environment:
       MONGO_INITDB_ROOT_USERNAME: ${MONGO_USER}
       MONGO_INITDB_ROOT_PASSWORD: ${MONGO_PASSWORD}
-
-
-#  ## --------------------------------------------------
-#  ## | Queue and Cache and Session Provider ( Redis )
-#  ## --------------------------------------------------
-#  redis:
-#    image: redis:4.0.9-alpine
-#    expose:
-#      - "6379"
-#    restart: always
-#    networks:
-#      - immiwork
-#
-#  ## --------------------------------------------
-#  ## | 6 : Elasticsearch search server
-#  ## --------------------------------------------
-#  elasticsearch:
-#    build:
-#      context: ./.docker-compose/elasticsearch
-#      dockerfile: Dockerfile
-#      args:
-#        - UID=${WWW_DATA_USER}
-#        - GID=${WWW_DATA_GROUP}
-#
-#    environment:
-#      - cluster.name=immiwork
-#      - bootstrap.memory_lock=true
-#
-#    ulimits:
-#      memlock:
-#        soft: -1
-#        hard: -1
-#    volumes:
-#      - ./.docker-compose/elasticsearch/data/:/usr/share/elasticsearch/data
-#    ports:
-#      - "127.0.0.1:9203:9200"
-#    restart: always
-#    networks:
-#      - immiwork
-#
-#networks:
-#  oauth_oauth_network:
-#    external: true
-#  immiwork:
-#    driver: bridge
-
