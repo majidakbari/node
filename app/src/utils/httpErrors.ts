@@ -28,6 +28,17 @@ export class HTTP400Error extends HTTPClientError {
     }
 }
 
+export class HTTP401Error extends HTTPClientError {
+
+    readonly statusCode = 401;
+
+    constructor(message: string | object ) {
+        super("Unauthenticated", [{
+            "reason" : message
+        }]);
+    }
+}
+
 export class HTTP422Error extends HTTPClientError {
 
     readonly statusCode = 422;
