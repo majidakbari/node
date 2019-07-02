@@ -1,13 +1,15 @@
-import { Request, Response } from "express";
+import {Request, Response} from "express";
 import {userRepository} from "../../../repository/userRepository";
 import {HttpSuccess} from "../../../utils/httpSuccess";
+import {paginator} from "../../../utils/paginator";
 
 /**
  * @class listUsersAction
  */
 export class listUsersAction {
 
-    constructor(private repo: userRepository) {}
+    constructor(private repo: userRepository) {
+    }
 
     /**
      * @param req
@@ -15,7 +17,16 @@ export class listUsersAction {
      */
     async invoke(req: Request, res: Response) {
 
-        let user = {'s' : ''};
-        return HttpSuccess(res, user, 201);
+        let perPage = 10;
+        let page = paginator.filterPage(req.query.page);
+
+        let result = await this.repo.findAll(page).then((users) => {
+            return users;
+        });
+
+        return HttpSuccess(
+            res,
+            new paginator(result.data, result.count, page, perPage, process.env.API_BASE_URL + req.path).resolve()
+            );
     }
 }

@@ -22,4 +22,11 @@ export class userRepository {
             _id: new ObjectId(id)
         }, {"$set" : postData}, options);
     }
+
+    async findAll(page: number = 1, perPage:number = 10){
+        return {
+            data: await userModel.find().limit(perPage).skip((page - 1) * perPage),
+            count: await userModel.countDocuments({})
+        };
+    }
 }
