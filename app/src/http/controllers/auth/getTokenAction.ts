@@ -36,7 +36,9 @@ export class getTokenAction {
         } catch (err) {
             res.status(401).json({
                 "error": "Unauthenticated",
-                "details": "Invalid credentials"
+                "details": [{
+                    "reason" : "Invalid credentials"
+                }]
             });
         }
 
