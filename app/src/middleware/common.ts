@@ -7,6 +7,7 @@ import {validate, ValidationError} from 'class-validator';
 import {HTTP401Error, HTTP422Error} from "../utils/httpErrors";
 import express from "express";
 import * as jwt from "jsonwebtoken";
+import {userRepository} from "../repository/userRepository";
 
 /**
  * @param router
@@ -63,25 +64,47 @@ export const validationMiddleware = (type: any): express.RequestHandler => {
     };
 };
 
+/**
+ * authentication middleware
+ */
 export const authMiddleware = ((req: Request, res: Response, next: NextFunction) => {
 
-    const token = <string>req.headers["authorization"];
+    let token = <string>req.headers["authorization"];
     let jwtPayload;
+    const repo = new userRepository();
+
+    if (token) {
+        if (!token.startsWith('Bearer ')) {
+            return next(new HTTP401Error("Invalid Token"));
+        } else {
+            token = token.substr(7);
+        }
+    } else {
+        return next(new HTTP401Error("Missing Token"));
+    }
 
     try {
         jwtPayload = <any>jwt.verify(token, process.env.JWT_SECRET || '');
         res.locals.jwtPayload = jwtPayload;
     } catch (error) {
         //If token is not valid, respond with 401 (unauthorized)
-        next(new HTTP401Error("Invalid Token"));
+        return next(new HTTP401Error("Invalid Token"));
     }
 
-    if (jwtPayload.exp < (Date.now() / 1000)) {
-        next(new HTTP401Error("Expired Token"));
+    if (jwtPayload && jwtPayload.exp < (Date.now() / 1000)) {
+        return next(new HTTP401Error("Expired Token"));
     }
 
-    req.app.set('user', jwtPayload.username);
+    let promise = repo.findOneByEmail(jwtPayload.username);
 
-    next();
+    promise.then((user) => {
+        if (!user) {
+            return next(new HTTP401Error("Invalid User"));
+        }
+    });
+
+    req.app.set('user', {'email': jwtPayload.username, 'id': jwtPayload.id});
+
+    return next();
+
 });
-

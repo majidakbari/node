@@ -18,17 +18,18 @@ export class getProfileAction {
      * @param res
      */
     async invoke(req: Request, res: Response) {
+        console.log('..................................................', 'controller')
 
-        let user = await this.repo.findOneByEmail(req.app.get('user'));
+        let user = await this.repo.findOneByEmail(req.app.get('user').email);
 
         if (user) {
             user.password = undefined;
             return HttpSuccess(res, user);
         } else {
-            res.send(401).json([{
+            res.send(401).json({
                 "error": "Unauthenticated",
                 "details": "User Not Found"
-            }]);
+            });
         }
     }
 }

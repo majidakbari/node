@@ -55,7 +55,8 @@ export class getTokenAction {
 
         return [jwt.sign(
             {
-                username: user.email
+                username: user.email,
+                id: user._id,
             },
             process.env.JWT_SECRET || '',
             {
