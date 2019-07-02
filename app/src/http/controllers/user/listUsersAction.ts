@@ -17,10 +17,10 @@ export class listUsersAction {
      */
     async invoke(req: Request, res: Response) {
 
-        let perPage = 10;
+        let perPage = paginator.filterPerPage(req.query.per_page);
         let page = paginator.filterPage(req.query.page);
 
-        let result = await this.repo.findAll(page).then((users) => {
+        let result = await this.repo.findAll(page, perPage).then((users) => {
             return users;
         });
 

@@ -54,7 +54,8 @@ export class paginator {
      * @return number
      */
     private getTo() {
-        return (this.per_page) * (this.current_page);
+        // return (this.per_page) * (this.current_page);
+        return this.from + this.data.length - 1;
     }
 
     /**
@@ -69,10 +70,10 @@ export class paginator {
      */
     private getNextPageUrl() {
 
-        if (this.current_page == this.last_page) {
+        if (this.current_page >= this.last_page) {
             return '';
         } else {
-            return this.request_path + '?page=' + (this.current_page + 1);
+            return this.request_path + '?page=' + (this.current_page + 1); // todo
         }
     }
 
@@ -81,7 +82,7 @@ export class paginator {
      */
     private getPrevPageUrl() {
 
-        if (this.current_page == 1) {
+        if (this.current_page == 1 || this.last_page < this.current_page - 1) {
             return '';
         } else {
             return this.request_path + '?page=' + (this.current_page - 1);
@@ -119,13 +120,30 @@ export class paginator {
      * @return number
      */
     public static filterPage(page: string) {
-        if (typeof page == "undefined") {
+        if (typeof page == "undefined" || page == '0') {
             return 1;
         }
         let p = parseInt(page);
 
         if (p < 0) {
             p = 1;
+        }
+
+        return p;
+    }
+
+    /**
+     * @param perPage
+     * @return number
+     */
+    public static filterPerPage(perPage: string) {
+        if (typeof perPage == "undefined" || perPage == '0') {
+            return 10;
+        }
+        let p = parseInt(perPage);
+
+        if (p < 0) {
+            p = 10;
         }
 
         return p;

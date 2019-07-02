@@ -5,6 +5,8 @@ interface User {
     name: string;
     email: string;
     password: string|undefined;
+    created_at: Date;
+    updated_at: Date;
     comparePassword(candidatePassword: string): Promise<boolean>;
 }
 
