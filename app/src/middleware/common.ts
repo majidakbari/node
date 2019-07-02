@@ -4,8 +4,9 @@ import parser from "body-parser";
 import compression from "compression";
 import {plainToClass} from 'class-transformer';
 import {validate, ValidationError} from 'class-validator';
-import {HTTP422Error} from "../utils/httpErrors";
+import {HTTP401Error, HTTP422Error} from "../utils/httpErrors";
 import express from "express";
+import * as jwt from "jsonwebtoken";
 
 /**
  * @param router
@@ -61,4 +62,26 @@ export const validationMiddleware = (type: any): express.RequestHandler => {
             });
     };
 };
+
+export const authMiddleware = ((req: Request, res: Response, next: NextFunction) => {
+
+    const token = <string>req.headers["authorization"];
+    let jwtPayload;
+
+    try {
+        jwtPayload = <any>jwt.verify(token, process.env.JWT_SECRET || '');
+        res.locals.jwtPayload = jwtPayload;
+    } catch (error) {
+        //If token is not valid, respond with 401 (unauthorized)
+        next(new HTTP401Error("Invalid Token"));
+    }
+
+    if (jwtPayload.exp < (Date.now() / 1000)) {
+        next(new HTTP401Error("Expired Token"));
+    }
+
+    req.app.set('user', jwtPayload.username);
+
+    next();
+});
 

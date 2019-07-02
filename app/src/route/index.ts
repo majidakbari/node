@@ -1,11 +1,12 @@
-import {Request, Response} from "express";
+import {Request, Response, Router} from "express";
 import {registerUserAction} from "../http/controllers/user/registerUserAction";
-import {validationMiddleware} from "../middleware/common";
+import {authMiddleware, validationMiddleware} from "../middleware/common";
 import registerUserValidators from "../validation/user/registerUserValidators";
 import {userRepository} from "../repository/userRepository";
 import getTokenValidator from "../validation/auth/getTokenValidator";
 import {getTokenAction} from "../http/controllers/auth/getTokenAction";
 import {getProfileAction} from "../http/controllers/user/getProfileAction";
+const router = Router();
 
 export default [
     {
@@ -28,14 +29,14 @@ export default [
             }
         ]
     },
-    // {
-    //     path: "/api/me",
-    //     method: "get",
-    //     handler: [
-    //         authMiddleware(),
-    //         (req: Request, res: Response) => {
-    //             new getProfileAction().invoke(req, res);
-    //         }
-    //     ]
-    // }
+    {
+        path: "/api/me",
+        method: "get",
+        handler: [
+            authMiddleware,
+            (req: Request, res: Response) => {
+                new getProfileAction().invoke(req, res);
+            }
+        ]
+    }
 ];

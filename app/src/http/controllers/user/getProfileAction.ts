@@ -12,6 +12,6 @@ export class getProfileAction {
      */
     async invoke(req: Request, res: Response) {
 
-        return HttpSuccess(res, {'hi' : 'nokaram'});
+        return HttpSuccess(res, {'hi' : req.app.get('user')});
     }
 }
