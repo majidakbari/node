@@ -5,6 +5,7 @@ import registerUserValidators from "../validation/user/registerUserValidators";
 import {userRepository} from "../repository/userRepository";
 import getTokenValidator from "../validation/auth/getTokenValidator";
 import {getTokenAction} from "../http/controllers/auth/getTokenAction";
+import {getProfileAction} from "../http/controllers/user/getProfileAction";
 
 export default [
     {
@@ -26,5 +27,15 @@ export default [
                 new getTokenAction(new userRepository).invoke(req, res);
             }
         ]
-    }
+    },
+    // {
+    //     path: "/api/me",
+    //     method: "get",
+    //     handler: [
+    //         authMiddleware(),
+    //         (req: Request, res: Response) => {
+    //             new getProfileAction().invoke(req, res);
+    //         }
+    //     ]
+    // }
 ];

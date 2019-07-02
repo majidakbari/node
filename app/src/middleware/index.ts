@@ -2,8 +2,7 @@ import {
     handleCors,
     handleBodyRequestParsing,
     handleCompression,
-    handleResponseHeaders,
-    validationMiddleware
+    handleResponseHeaders
 } from "./common";
 
-export default [handleCors, handleBodyRequestParsing, handleCompression, handleResponseHeaders, validationMiddleware];
+export default [handleCors, handleBodyRequestParsing, handleCompression, handleResponseHeaders];

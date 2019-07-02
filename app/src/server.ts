@@ -15,7 +15,6 @@ applyMiddleware(middleware, router);
 applyRoutes(routes, router);
 applyMiddleware(errorHandlers, router);
 connectToMongo();
-
 const PORT: string | undefined = process.env.NODE_PORT;
 const server = http.createServer(router);
 
