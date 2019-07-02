@@ -89,7 +89,7 @@ export default [
         method: "get",
         handler: [
             (req: Request, res: Response) => {
-                new showGameAction(new gameRepository()).invoke(req, res);
+                new showGameAction(new gameRepository(), new userRepository()).invoke(req, res);
             }
         ]
     }

@@ -1,13 +1,17 @@
 import {Request, Response} from "express";
 import {HttpSuccess} from "../../../utils/httpSuccess";
 import {gameRepository} from "../../../repository/gameRepository";
+import {userRepository} from "../../../repository/userRepository";
 
 /**
  * @class showGameAction
  */
 export class showGameAction {
 
-    constructor(private repo: gameRepository) {
+    constructor(
+        private repo: gameRepository,
+        private userRepo: userRepository
+    ) {
     }
 
     /**
@@ -17,8 +21,13 @@ export class showGameAction {
     async invoke(req: Request, res: Response) {
 
         try {
-            let game = await this.repo.findOneById(req.params.id);
-            return HttpSuccess(res, game);
+            let gameRecord = await this.repo.findOneById(req.params.id).then((game) => {
+                return game;
+            });
+
+            let result = await this.getUsersFromDb(gameRecord);
+
+            return HttpSuccess(res, result);
         } catch (e) {
             console.log(e);
             return res.status(404).json({
@@ -26,6 +35,29 @@ export class showGameAction {
                 details: []
             });
         }
+    }
 
+
+    /**
+     * @param game
+     * @return game
+     */
+    async getUsersFromDb(game: any) {
+
+        let users = game.user_ids.map(function (element: any) {
+            return element.id;
+        });
+
+        const result = await this.userRepo.findManyByIds(users);
+
+        game.user_ids.forEach(function (value: any) {
+            result.forEach(function (v) {
+                if (value.id == v._id) {
+                    value.user = v;
+                }
+            })
+        });
+
+        return game;
     }
 }

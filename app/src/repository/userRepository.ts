@@ -19,7 +19,7 @@ export class userRepository {
      * @param email
      */
     async findOneByEmail(email: String) {
-        return await userModel.findOne({'email' : email});
+        return await userModel.findOne({'email': email});
     }
 
     /**
@@ -40,17 +40,24 @@ export class userRepository {
 
         return await userModel.updateOne({
             _id: new ObjectId(id)
-        }, {"$set" : postData}, options);
+        }, {"$set": postData}, options);
     }
 
     /**
      * @param page
      * @param perPage
      */
-    async findAll(page: number = 1, perPage:number = 10){
+    async findAll(page: number = 1, perPage: number = 10) {
         return {
-            data: await userModel.find({}, {"_id": 1, "email": 1, "name" : 1}).limit(perPage).skip((page - 1) * perPage),
+            data: await userModel.find({}, {"_id": 1, "email": 1, "name": 1}).limit(perPage).skip((page - 1) * perPage),
             count: await userModel.countDocuments({})
         };
+    }
+
+    /**
+     * @param ids
+     */
+    async findManyByIds(ids: any) {
+        return await userModel.find({_id: {$in : ids}}, {"_id": 1, "email": 1, "name": 1});
     }
 }
