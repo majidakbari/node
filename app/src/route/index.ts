@@ -15,6 +15,7 @@ import {gameRepository} from "../repository/gameRepository";
 import {showGameAction} from "../http/controllers/game/showGameAction";
 import {listGamesAction} from "../http/controllers/game/listGamesAction";
 import {joinGameAction} from "../http/controllers/game/joinGameAction";
+import {leaveGameAction} from "../http/controllers/game/leaveGameAction";
 
 export default [
 
@@ -101,6 +102,16 @@ export default [
             authMiddleware,
             (req: Request, res: Response) => {
                 new joinGameAction(new gameRepository()).invoke(req, res);
+            }
+        ]
+    },
+    {
+        path: "/api/game/:id/left",
+        method: "delete",
+        handler: [
+            authMiddleware,
+            (req: Request, res: Response) => {
+                new leaveGameAction(new gameRepository()).invoke(req, res);
             }
         ]
     },
