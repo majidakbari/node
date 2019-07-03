@@ -21,6 +21,7 @@ import {inviteUserToGameAction} from "../http/controllers/game/inviteUserToGameA
 import {kickUserFromGameAction} from "../http/controllers/game/kickUserFromGameAction";
 import {addToScoreAction} from "../http/controllers/game/addToScoreAction";
 import addToScoreValidator from "../validation/game/addToScoreValidator";
+import {updateGameAction} from "../http/controllers/game/updateGameAction";
 
 export default [
 
@@ -97,6 +98,17 @@ export default [
         handler: [
             (req: Request, res: Response) => {
                 new showGameAction(new gameRepository(), new userRepository()).invoke(req, res);
+            }
+        ]
+    },
+    {
+        path: "/api/game/:id",
+        method: "put",
+        handler: [
+            authMiddleware,
+            validationMiddleware(createGameValidator),
+            (req: Request, res: Response) => {
+                new updateGameAction(new gameRepository()).invoke(req, res);
             }
         ]
     },
