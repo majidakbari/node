@@ -16,6 +16,9 @@ import {showGameAction} from "../http/controllers/game/showGameAction";
 import {listGamesAction} from "../http/controllers/game/listGamesAction";
 import {joinGameAction} from "../http/controllers/game/joinGameAction";
 import {leaveGameAction} from "../http/controllers/game/leaveGameAction";
+import kickOrInviteUserToGameValidator from "../validation/game/kickOrInviteUserToGameValidator";
+import {inviteUserToGameAction} from "../http/controllers/game/inviteUserToGameAction";
+import {kickUserFromGameAction} from "../http/controllers/game/kickUserFromGameAction";
 
 export default [
 
@@ -112,6 +115,28 @@ export default [
             authMiddleware,
             (req: Request, res: Response) => {
                 new leaveGameAction(new gameRepository()).invoke(req, res);
+            }
+        ]
+    },
+    {
+        path: "/api/game/:id/invite",
+        method: "post",
+        handler: [
+            authMiddleware,
+            validationMiddleware(kickOrInviteUserToGameValidator),
+            (req: Request, res: Response) => {
+                new inviteUserToGameAction(new gameRepository()).invoke(req, res);
+            }
+        ]
+    },
+    {
+        path: "/api/game/:id/kick",
+        method: "post",
+        handler: [
+            authMiddleware,
+            validationMiddleware(kickOrInviteUserToGameValidator),
+            (req: Request, res: Response) => {
+                new kickUserFromGameAction(new gameRepository()).invoke(req, res);
             }
         ]
     },

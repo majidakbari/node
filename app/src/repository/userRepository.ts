@@ -43,6 +43,15 @@ export class userRepository {
         }, {"$set": postData}, options);
     }
 
+
+    /**
+     * @param id
+     */
+    async findOneById(id: string) {
+
+        return await userModel.findById(id);
+    }
+
     /**
      * @param projection
      * @param page
