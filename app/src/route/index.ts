@@ -1,4 +1,4 @@
-import {Request, Response, Router} from "express";
+import {Request, Response} from "express";
 import {registerUserAction} from "../http/controllers/user/registerUserAction";
 import {authMiddleware, validationMiddleware} from "../middleware/common";
 import registerUserValidators from "../validation/user/registerUserValidators";
@@ -22,6 +22,7 @@ import {kickUserFromGameAction} from "../http/controllers/game/kickUserFromGameA
 import {addToScoreAction} from "../http/controllers/game/addToScoreAction";
 import addToScoreValidator from "../validation/game/addToScoreValidator";
 import {updateGameAction} from "../http/controllers/game/updateGameAction";
+
 
 export default [
 

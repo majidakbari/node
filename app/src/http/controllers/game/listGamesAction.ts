@@ -53,7 +53,7 @@ export class listGamesAction {
             const result = await this.userRepo.findManyByIds(users);
 
             games.forEach(function (value: any) {
-                result.forEach(function (v) {
+                result.forEach(function (v: any) {
                     if (value.winner_id == v._id) {
                         value.winner = v;
                     }
