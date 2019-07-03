@@ -3,7 +3,7 @@ import {HttpSuccess} from "../../../utils/httpSuccess";
 import {gameRepository} from "../../../repository/gameRepository";
 
 /**
- * @class joinGameAction
+ * @class kickUserFromGameAction
  */
 export class kickUserFromGameAction {
 
@@ -20,22 +20,27 @@ export class kickUserFromGameAction {
                 return game;
             });
 
-            if (!this.checkAccess(req.app.get('user').id, gameRecord)) {
+            const userId = req.body.user_id;
+            
+            if (!this.checkAccess(userId, gameRecord)) {
                 return res.status(400).json({
                     error: "Bad Request",
                     details: [
                         {
-                            "reason" : "You are already a member of this game or the game is closed"
+                            "reason" : "This user is not a member of this game or the game is closed"
                         }
                     ]
                 });
             }
+
             if (gameRecord) {
                 let userIds = gameRecord.user_ids;
-                userIds.push({
-                    id: req.app.get('user').id,
-                    score: 0
-                });
+
+                for (let index in userIds) {
+                    if (userIds[index].id == userId) {
+                        userIds.splice(index, 1)
+                    }
+                }
                 await this.repo.findOneAndUpdate(gameRecord._id, {user_ids: userIds});
                 return HttpSuccess(res, {}, 204);
             }
@@ -55,11 +60,11 @@ export class kickUserFromGameAction {
      * @return boolean
      */
     private checkAccess(userId: string, gameRecord: any) {
-        let authorized = true;
+        let authorized = false;
 
         gameRecord.user_ids.forEach(function (element: any) {
             if (element.id == userId) {
-                authorized = false;
+                authorized = true;
             }
         });
 

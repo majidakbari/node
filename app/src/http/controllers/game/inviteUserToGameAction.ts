@@ -3,7 +3,7 @@ import {HttpSuccess} from "../../../utils/httpSuccess";
 import {gameRepository} from "../../../repository/gameRepository";
 
 /**
- * @class joinGameAction
+ * @class inviteUserToGameAction
  */
 export class inviteUserToGameAction {
 
@@ -27,7 +27,7 @@ export class inviteUserToGameAction {
                     error: "Bad Request",
                     details: [
                         {
-                            "reason" : "User already is a member of this game or the game is closed"
+                            "reason" : "This user already is a member of this game or the game is closed"
                         }
                     ]
                 });
