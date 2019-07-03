@@ -1,0 +1,3211 @@
+{
+	"info": {
+		"_postman_id": "1523c000-26f5-4c4f-9e35-1ad6ab089b6c",
+		"name": "Node",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "user",
+			"item": [
+				{
+					"name": "Register user",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\" : \"majid\",\n\t\"email\" : \"majid@akbari.com\",\n\t\"password\" : \"123456\"\n}"
+						},
+						"url": {
+							"raw": "{{node_server}}/api/user",
+							"host": [
+								"{{node_server}}"
+							],
+							"path": [
+								"api",
+								"user"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Error - 422",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "localhost:3004/api/user",
+									"host": [
+										"localhost"
+									],
+									"port": "3004",
+									"path": [
+										"api",
+										"user"
+									]
+								}
+							},
+							"status": "Unprocessable Entity",
+							"code": 422,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin, Accept-Encoding"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "532"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"214-/5ouB8+0/E7dok3X3UdXdx4pfXM\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 02 Jul 2019 06:29:41 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"error\": \"Unprocessable Entity\",\n    \"details\": [\n        {\n            \"name\": [\n                \"name should not be null or undefined\",\n                \"name must be shorter than or equal to 255 characters\",\n                \"name must be a string\"\n            ]\n        },\n        {\n            \"email\": [\n                \"email should not be null or undefined\",\n                \"email must be shorter than or equal to 255 characters\",\n                \"email must be an email\",\n                \"email must be a string\"\n            ]\n        },\n        {\n            \"password\": [\n                \"password should not be null or undefined\",\n                \"password must be shorter than or equal to 255 characters\",\n                \"password must be longer than or equal to 6 characters\",\n                \"password must be a string\"\n            ]\n        }\n    ]\n}"
+						},
+						{
+							"name": "Success - 201",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"name\" : \"majid\",\n\t\"email\" : \"majid@akbari.com\",\n\t\"password\" : \"123456\"\n}"
+								},
+								"url": {
+									"raw": "{{node_server}}/api/user",
+									"host": [
+										"{{node_server}}"
+									],
+									"path": [
+										"api",
+										"user"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin, Accept-Encoding"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "193"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"c1-bfn+s3DZGIecDSo6JxcJmpNMMHU\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 02 Jul 2019 15:09:01 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Success\",\n    \"data\": {\n        \"_id\": \"5d1b738dbe95ff6e7eab1d8a\",\n        \"name\": \"majid\",\n        \"email\": \"majid@akbari.com\",\n        \"created_at\": \"2019-07-02T15:09:01.182Z\",\n        \"updated_at\": \"2019-07-02T15:09:01.182Z\",\n        \"__v\": 0\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Get profile",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{node_server}}/api/me",
+							"host": [
+								"{{node_server}}"
+							],
+							"path": [
+								"api",
+								"me"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Error - 401",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFAYmMuY29tIiwiaWF0IjoxNTYyMDU4ODkyLCJleHAiOjE1NjIxNDUyOTJ9.o-jv809dmyh8nUJ1Fj4DIqxtTiz0p69UPfG6-8lpN-U",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{node_server}}/api/me",
+									"host": [
+										"{{node_server}}"
+									],
+									"path": [
+										"api",
+										"me"
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin, Accept-Encoding"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "66"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"42-h2BOCTrqJNaFUuV7E8T4EPt18xM\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 02 Jul 2019 09:36:26 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"error\": \"Unauthenticated\",\n    \"details\": [\n        {\n            \"reason\": \"Invalid Token\"\n        }\n    ]\n}"
+						},
+						{
+							"name": "Success - 200",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFAYi5jb20iLCJpZCI6IjVkMWI3MzQ2YmU5NWZmNmU3ZWFiMWQ4OSIsImlhdCI6MTU2MjA4MDEwMCwiZXhwIjoxNTYyMTY2NTAwfQ.d3z5ukn4xQ6UXLiovPkVvXo5f5IASHKBoqhEQSP0spo",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{node_server}}/api/me",
+									"host": [
+										"{{node_server}}"
+									],
+									"path": [
+										"api",
+										"me"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin, Accept-Encoding"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "184"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"b8-x6/Yd2UWVsskBgK2EZJChoU0qYk\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 02 Jul 2019 15:08:31 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Success\",\n    \"data\": {\n        \"_id\": \"5d1b7346be95ff6e7eab1d89\",\n        \"name\": \"majid\",\n        \"email\": \"a@b.com\",\n        \"created_at\": \"2019-07-02T15:07:50.830Z\",\n        \"updated_at\": \"2019-07-02T15:07:50.831Z\",\n        \"__v\": 0\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Update user",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n        \"name\": \"majid vahid\",\n        \"email\": \"v@vahid.com\",\n        \"password\" : \"123456\"\n}"
+						},
+						"url": {
+							"raw": "{{node_server}}/api/user",
+							"host": [
+								"{{node_server}}"
+							],
+							"path": [
+								"api",
+								"user"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Error - 422",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InZAdmFoaWQuY29tIiwiaWQiOiI1ZDFiNTY4NzM1Y2MzZjY5YTEwZmIwZjciLCJpYXQiOjE1NjIwNzMxMjEsImV4cCI6MTU2MjE1OTUyMX0.9d6e6jezu6fMl5kXuJf3JYRLwSO3ixTnk5Yq2P218ds",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{node_server}}/api/user",
+									"host": [
+										"{{node_server}}"
+									],
+									"path": [
+										"api",
+										"user"
+									]
+								}
+							},
+							"status": "Unprocessable Entity",
+							"code": 422,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin, Accept-Encoding"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "532"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"214-/5ouB8+0/E7dok3X3UdXdx4pfXM\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 02 Jul 2019 13:12:37 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"error\": \"Unprocessable Entity\",\n    \"details\": [\n        {\n            \"name\": [\n                \"name should not be null or undefined\",\n                \"name must be shorter than or equal to 255 characters\",\n                \"name must be a string\"\n            ]\n        },\n        {\n            \"email\": [\n                \"email should not be null or undefined\",\n                \"email must be shorter than or equal to 255 characters\",\n                \"email must be an email\",\n                \"email must be a string\"\n            ]\n        },\n        {\n            \"password\": [\n                \"password should not be null or undefined\",\n                \"password must be shorter than or equal to 255 characters\",\n                \"password must be longer than or equal to 6 characters\",\n                \"password must be a string\"\n            ]\n        }\n    ]\n}"
+						},
+						{
+							"name": "Success - 204",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InZAdmFoaWQuY29tIiwiaWQiOiI1ZDFiNTY4NzM1Y2MzZjY5YTEwZmIwZjciLCJpYXQiOjE1NjIwNzMxMjEsImV4cCI6MTU2MjE1OTUyMX0.9d6e6jezu6fMl5kXuJf3JYRLwSO3ixTnk5Yq2P218ds",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n        \"name\": \"majid vahid\",\n        \"email\": \"v@vahid.com\",\n        \"password\" : \"123456\"\n}"
+								},
+								"url": {
+									"raw": "{{node_server}}/api/user",
+									"host": [
+										"{{node_server}}"
+									],
+									"path": [
+										"api",
+										"user"
+									]
+								}
+							},
+							"status": "No Content",
+							"code": 204,
+							"_postman_previewlanguage": "plain",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"1f-POpc/951m75QkixLAwyJVVBE8gI\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 02 Jul 2019 13:12:12 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": null
+						},
+						{
+							"name": "Error - 401",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InZAdmFoaWQuY29tIiwiaWQiOiI1ZDFiNTY4NzM1Y2MzZjY5YTEwZmIwZjciLCJpYXQiOjE1NjIwNzMxMjEsImV4cCI6MTU2MjE1OTUyMX0.9d6e6jezu6fMl5kXuJf3JYRLwSO3ixTnk5Yq2P218ds",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n        \"name\": \"majid vahid\",\n        \"email\": \"v@vahid.com\",\n        \"password\" : \"123456\"\n}"
+								},
+								"url": {
+									"raw": "{{node_server}}/api/user",
+									"host": [
+										"{{node_server}}"
+									],
+									"path": [
+										"api",
+										"user"
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin, Accept-Encoding"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "66"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"42-RjPHrN94+piiUdl8lxCuoILtGoQ\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 02 Jul 2019 13:12:26 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"error\": \"Unauthenticated\",\n    \"details\": [\n        {\n            \"reason\": \"Missing Token\"\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "List all users",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{node_server}}/api/user?page=1&per_page=5",
+							"host": [
+								"{{node_server}}"
+							],
+							"path": [
+								"api",
+								"user"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "per_page",
+									"value": "5"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Success - 200",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{node_server}}/api/user?page=1&per_page=2",
+									"host": [
+										"{{node_server}}"
+									],
+									"path": [
+										"api",
+										"user"
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "1"
+										},
+										{
+											"key": "per_page",
+											"value": "2"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin, Accept-Encoding"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "375"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"177-v7tlUKMtN07ncVMSwx3BR99G7Tk\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 02 Jul 2019 16:00:15 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Success\",\n    \"data\": {\n        \"data\": [\n            {\n                \"_id\": \"5d1b567735cc3f69a10fb0f6\",\n                \"name\": \"Majid Akbari\",\n                \"email\": \"b@b.com\"\n            },\n            {\n                \"_id\": \"5d1b568735cc3f69a10fb0f7\",\n                \"name\": \"majid vahid\",\n                \"email\": \"v@a.com\"\n            }\n        ],\n        \"from\": 1,\n        \"to\": 2,\n        \"total\": 5,\n        \"current_page\": 1,\n        \"last_page\": 3,\n        \"per_page\": 2,\n        \"next_page_url\": \"localhost:9090/api/user?page=2\",\n        \"prev_page_url\": \"\",\n        \"last_page_url\": \"localhost:9090/api/user?page=3\"\n    }\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "auth",
+			"item": [
+				{
+					"name": "Login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "c73fd12a-6ba3-4a72-850e-8e8d07f3a3f3",
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);",
+									"",
+									"postman.setEnvironmentVariable(\"token\", jsonData.data.access_token);",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"email\" : \"majid@akbari.com\",\n\t\"password\" : \"123456\"\n}"
+						},
+						"url": {
+							"raw": "{{node_server}}/oauth/token",
+							"host": [
+								"{{node_server}}"
+							],
+							"path": [
+								"oauth",
+								"token"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Success - 200",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"email\" : \"a@bc.com\",\n\t\"password\" : \"123456\"\n}"
+								},
+								"url": {
+									"raw": "{{node_server}}/oauth/token",
+									"host": [
+										"{{node_server}}"
+									],
+									"path": [
+										"oauth",
+										"token"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin, Accept-Encoding"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "240"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"f0-kNdVAIqxQ6BW86GBna+A4CUYoXg\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 02 Jul 2019 08:46:37 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Success\",\n    \"data\": {\n        \"type\": \"Bearer\",\n        \"access_token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFAYmMuY29tIiwiaWF0IjoxNTYyMDU3MTk3LCJleHAiOjE1NjIxNDM1OTd9.zj5xYEeWNWCi86eHRuRv0uBVXigBhqUnRVpjBZreOes\",\n        \"expires_in\": \"24h\"\n    }\n}"
+						},
+						{
+							"name": "Error - 401",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"email\" : \"aa@b.com\",\n\t\"password\" : \"123456\"\n}"
+								},
+								"url": {
+									"raw": "{{node_server}}/oauth/token",
+									"host": [
+										"{{node_server}}"
+									],
+									"path": [
+										"oauth",
+										"token"
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin, Accept-Encoding"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "72"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"48-2V3mW6qu7hiF8FxB/9DaK7O0plw\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 02 Jul 2019 06:54:06 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"error\": \"Unauthenticated\",\n    \"details\": [\n        {\n            \"reason\": \"Invalid credentials\"\n        }\n    ]\n}"
+						},
+						{
+							"name": "Error - 422",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{node_server}}/oauth/token",
+									"host": [
+										"{{node_server}}"
+									],
+									"path": [
+										"oauth",
+										"token"
+									]
+								}
+							},
+							"status": "Unprocessable Entity",
+							"code": 422,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin, Accept-Encoding"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "403"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"193-qWI4G1AQ8dvIdccyngne605hQfU\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 02 Jul 2019 06:46:42 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"error\": \"Unprocessable Entity\",\n    \"details\": [\n        {\n            \"email\": [\n                \"email should not be null or undefined\",\n                \"email must be shorter than or equal to 255 characters\",\n                \"email must be an email\",\n                \"email must be a string\"\n            ]\n        },\n        {\n            \"password\": [\n                \"password should not be null or undefined\",\n                \"password must be shorter than or equal to 255 characters\",\n                \"password must be longer than or equal to 6 characters\",\n                \"password must be a string\"\n            ]\n        }\n    ]\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "game",
+			"item": [
+				{
+					"name": "Create game",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "2d6436c0-fe8f-49cd-991d-df48ee0ceb4d",
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);",
+									"",
+									"postman.setEnvironmentVariable(\"game_id\", jsonData.data._id);",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"target_score\" : 1000\n}"
+						},
+						"url": {
+							"raw": "{{node_server}}/api/game",
+							"host": [
+								"{{node_server}}"
+							],
+							"path": [
+								"api",
+								"game"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Error - 401",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{node_server}}/api/game",
+									"host": [
+										"{{node_server}}"
+									],
+									"path": [
+										"api",
+										"game"
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin, Accept-Encoding"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "66"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"42-RjPHrN94+piiUdl8lxCuoILtGoQ\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 02 Jul 2019 16:28:03 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"error\": \"Unauthenticated\",\n    \"details\": [\n        {\n            \"reason\": \"Missing Token\"\n        }\n    ]\n}"
+						},
+						{
+							"name": "Error - 422",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im1hamlkQGFrYmFyaS5jb20iLCJpZCI6IjVkMWI3MzhkYmU5NWZmNmU3ZWFiMWQ4YSIsImlhdCI6MTU2MjA4NDkyMiwiZXhwIjoxNTYyMTcxMzIyfQ.LX-OQ0weQ3RTVtpgg47KS4kVobCSYPr57rSzOIIe3SY",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{node_server}}/api/game",
+									"host": [
+										"{{node_server}}"
+									],
+									"path": [
+										"api",
+										"game"
+									]
+								}
+							},
+							"status": "Unprocessable Entity",
+							"code": 422,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin, Accept-Encoding"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "142"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"8e-cj8wzGZk7G7xS3UDXE+CyaRzSlU\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 02 Jul 2019 16:28:53 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"error\": \"Unprocessable Entity\",\n    \"details\": [\n        {\n            \"target_score\": [\n                \"target_score should not be null or undefined\",\n                \"target_score must be a number\"\n            ]\n        }\n    ]\n}"
+						},
+						{
+							"name": "Success - 201",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im1hamlkQGFrYmFyaS5jb20iLCJpZCI6IjVkMWI3MzhkYmU5NWZmNmU3ZWFiMWQ4YSIsImlhdCI6MTU2MjA4NDkyMiwiZXhwIjoxNTYyMTcxMzIyfQ.LX-OQ0weQ3RTVtpgg47KS4kVobCSYPr57rSzOIIe3SY",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"target_score\" : 1000\n}"
+								},
+								"url": {
+									"raw": "{{node_server}}/api/game",
+									"host": [
+										"{{node_server}}"
+									],
+									"path": [
+										"api",
+										"game"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin, Accept-Encoding"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "298"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"12a-j3eM+Oan2t3QztkvWHH+6jlXYR4\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 02 Jul 2019 17:02:50 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Success\",\n    \"data\": {\n        \"user_ids\": [\n            {\n                \"id\": \"5d1b738dbe95ff6e7eab1d8a\",\n                \"score\": 0\n            }\n        ],\n        \"_id\": \"5d1b8e3a6da88673d97758b3\",\n        \"target_score\": 1000,\n        \"created_by\": \"5d1b738dbe95ff6e7eab1d8a\",\n        \"winner_id\": \"\",\n        \"status\": \"new\",\n        \"created_at\": \"2019-07-02T17:02:50.307Z\",\n        \"updated_at\": \"2019-07-02T17:02:50.307Z\",\n        \"__v\": 0\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Show a game by id ",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{node_server}}/api/game/{{game_id}}",
+							"host": [
+								"{{node_server}}"
+							],
+							"path": [
+								"api",
+								"game",
+								"{{game_id}}"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Error - 404",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{node_server}}/api/game/{{game_id}}",
+									"host": [
+										"{{node_server}}"
+									],
+									"path": [
+										"api",
+										"game",
+										"{{game_id}}"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin, Accept-Encoding"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "34"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"22-F2QIBRvKG8Gj/7yHHKrAnaEzbgA\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 02 Jul 2019 16:52:26 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"error\": \"Not found\",\n    \"details\": []\n}"
+						},
+						{
+							"name": "Success - 200",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{node_server}}/api/game/5d1b8e3a6da88673d97758b3",
+									"host": [
+										"{{node_server}}"
+									],
+									"path": [
+										"api",
+										"game",
+										"5d1b8e3a6da88673d97758b3"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin, Accept-Encoding"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "526"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"20e-HjxkFZJ/efBbY6OTva8vXDa5N3k\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 02 Jul 2019 18:31:45 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Success\",\n    \"data\": {\n        \"user_ids\": [\n            {\n                \"id\": \"5d1b738dbe95ff6e7eab1d8a\",\n                \"score\": 0,\n                \"user\": {\n                    \"_id\": \"5d1b738dbe95ff6e7eab1d8a\",\n                    \"name\": \"majid Akbari updated\",\n                    \"email\": \"majid@akbari.com\"\n                }\n            },\n            {\n                \"id\": \"5d1b82ca0e52d67126398709\",\n                \"score\": 0,\n                \"user\": {\n                    \"_id\": \"5d1b82ca0e52d67126398709\",\n                    \"email\": \"majid@akbarii.com\",\n                    \"name\": \"majid\"\n                }\n            }\n        ],\n        \"_id\": \"5d1b8e3a6da88673d97758b3\",\n        \"target_score\": 1000,\n        \"created_by\": \"5d1b738dbe95ff6e7eab1d8a\",\n        \"winner_id\": \"\",\n        \"status\": \"new\",\n        \"created_at\": \"2019-07-02T17:02:50.307Z\",\n        \"updated_at\": \"2019-07-02T17:02:50.307Z\",\n        \"__v\": 0\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "List all games",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{node_server}}/api/game?per_page=10&page=1",
+							"host": [
+								"{{node_server}}"
+							],
+							"path": [
+								"api",
+								"game"
+							],
+							"query": [
+								{
+									"key": "per_page",
+									"value": "10"
+								},
+								{
+									"key": "page",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Success - 200",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{node_server}}/api/game?per_page=10&page=1",
+									"host": [
+										"{{node_server}}"
+									],
+									"path": [
+										"api",
+										"game"
+									],
+									"query": [
+										{
+											"key": "per_page",
+											"value": "10"
+										},
+										{
+											"key": "page",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin, Accept-Encoding"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"598-93aQQMlgCD2bCPlTInNZ9Owt84Y\""
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 02 Jul 2019 18:59:27 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Success\",\n    \"data\": {\n        \"data\": [\n            {\n                \"_id\": \"5d1b873204d2e0722ea13657\",\n                \"target_score\": 1000,\n                \"created_at\": \"2019-07-02T16:32:50.009Z\",\n                \"updated_at\": \"2019-07-02T16:32:50.009Z\"\n            },\n            {\n                \"_id\": \"5d1b8797c04f77723eddb795\",\n                \"target_score\": 1000,\n                \"winner_id\": \"\",\n                \"created_at\": \"2019-07-02T16:34:31.063Z\",\n                \"updated_at\": \"2019-07-02T16:34:31.064Z\"\n            },\n            {\n                \"_id\": \"5d1b895ae6545672984c3ca3\",\n                \"target_score\": 1000,\n                \"winner_id\": \"\",\n                \"status\": \"new\",\n                \"created_at\": \"2019-07-02T16:42:02.638Z\",\n                \"updated_at\": \"2019-07-02T16:42:02.638Z\"\n            },\n            {\n                \"_id\": \"5d1b8aae95518473094fc76f\",\n                \"target_score\": 1000,\n                \"winner_id\": \"\",\n                \"status\": \"new\",\n                \"created_at\": \"2019-07-02T16:47:42.657Z\",\n                \"updated_at\": \"2019-07-02T16:47:42.658Z\"\n            },\n            {\n                \"_id\": \"5d1b8e3a6da88673d97758b3\",\n                \"target_score\": 1000,\n                \"winner_id\": \"\",\n                \"status\": \"new\",\n                \"created_at\": \"2019-07-02T17:02:50.307Z\",\n                \"updated_at\": \"2019-07-02T17:02:50.307Z\"\n            },\n            {\n                \"_id\": \"5d1ba5ae06cedc767fbe742f\",\n                \"target_score\": 1000,\n                \"winner_id\": \"5d1b738dbe95ff6e7eab1d8a\",\n                \"status\": \"new\",\n                \"created_at\": \"2019-07-02T18:42:54.191Z\",\n                \"updated_at\": \"2019-07-02T18:42:54.191Z\",\n                \"winner\": {\n                    \"_id\": \"5d1b738dbe95ff6e7eab1d8a\",\n                    \"name\": \"majid Akbari updated\",\n                    \"email\": \"majid@akbari.com\"\n                }\n            },\n            {\n                \"_id\": \"5d1ba7a9d5620676fed6f053\",\n                \"target_score\": 1000,\n                \"winner_id\": \"\",\n                \"status\": \"new\",\n                \"created_at\": \"2019-07-02T18:51:21.163Z\",\n                \"updated_at\": \"2019-07-02T18:51:21.163Z\"\n            }\n        ],\n        \"from\": 1,\n        \"to\": 7,\n        \"total\": 7,\n        \"current_page\": 1,\n        \"last_page\": 1,\n        \"per_page\": 10,\n        \"next_page_url\": \"\",\n        \"prev_page_url\": \"\",\n        \"last_page_url\": \"localhost:9090/api/game?page=1\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Join a game",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{node_server}}/api/game/{{game_id}}/join",
+							"host": [
+								"{{node_server}}"
+							],
+							"path": [
+								"api",
+								"game",
+								"{{game_id}}",
+								"join"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Error - 400",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im1hamlkQGFrYmFyaS5jb20iLCJpZCI6IjVkMWI3MzhkYmU5NWZmNmU3ZWFiMWQ4YSIsImlhdCI6MTU2MjA5NDY4MSwiZXhwIjoxNTYyMTgxMDgxfQ.RHhJmLUrFkLWnALQBodVymYSR8ZY2GNjc5tedmloBTI",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{node_server}}/api/game/5d1bb13598784b7925474d65/join",
+									"host": [
+										"{{node_server}}"
+									],
+									"path": [
+										"api",
+										"game",
+										"5d1bb13598784b7925474d65",
+										"join"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin, Accept-Encoding"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "86"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"56-y8QyQuL+T/bP79RZqbb1y0xgiAQ\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 02 Jul 2019 19:32:21 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"error\": \"Bad Request\",\n    \"details\": [\n        {\n            \"reason\": \"You are already a member of this game\"\n        }\n    ]\n}"
+						},
+						{
+							"name": "Success - 204",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im1hamlkQGFrYmFyaS5jb20iLCJpZCI6IjVkMWI3MzhkYmU5NWZmNmU3ZWFiMWQ4YSIsImlhdCI6MTU2MjA5NDY4MSwiZXhwIjoxNTYyMTgxMDgxfQ.RHhJmLUrFkLWnALQBodVymYSR8ZY2GNjc5tedmloBTI",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{node_server}}/api/game/5d1ba7a9d5620676fed6f053/join",
+									"host": [
+										"{{node_server}}"
+									],
+									"path": [
+										"api",
+										"game",
+										"5d1ba7a9d5620676fed6f053",
+										"join"
+									]
+								}
+							},
+							"status": "No Content",
+							"code": 204,
+							"_postman_previewlanguage": "plain",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"1f-POpc/951m75QkixLAwyJVVBE8gI\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 02 Jul 2019 19:31:08 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": null
+						}
+					]
+				},
+				{
+					"name": "Leave a game",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{node_server}}/api/game/{{game_id}}/left",
+							"host": [
+								"{{node_server}}"
+							],
+							"path": [
+								"api",
+								"game",
+								"{{game_id}}",
+								"left"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Error - 404",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFAYi5jb20iLCJpZCI6IjVkMWI3MzQ2YmU5NWZmNmU3ZWFiMWQ4OSIsImlhdCI6MTU2MjA5NTk3MCwiZXhwIjoxNTYyMTgyMzcwfQ.d1LLGXPH_-CpFlSc-o6t47LQ40sC55LDDR2YPKCN6g0",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{node_server}}/api/game/a5d1c50761786847bbc815610/left",
+									"host": [
+										"{{node_server}}"
+									],
+									"path": [
+										"api",
+										"game",
+										"a5d1c50761786847bbc815610",
+										"left"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin, Accept-Encoding"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "34"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"22-F2QIBRvKG8Gj/7yHHKrAnaEzbgA\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 03 Jul 2019 07:05:38 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"error\": \"Not found\",\n    \"details\": []\n}"
+						},
+						{
+							"name": "Error - 400",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFAYi5jb20iLCJpZCI6IjVkMWI3MzQ2YmU5NWZmNmU3ZWFiMWQ4OSIsImlhdCI6MTU2MjA5NTk3MCwiZXhwIjoxNTYyMTgyMzcwfQ.d1LLGXPH_-CpFlSc-o6t47LQ40sC55LDDR2YPKCN6g0",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{node_server}}/api/game/5d1c50761786847bbc815610/left",
+									"host": [
+										"{{node_server}}"
+									],
+									"path": [
+										"api",
+										"game",
+										"5d1c50761786847bbc815610",
+										"left"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin, Accept-Encoding"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "104"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"68-5zPioa8d0bbFWigB5ldbTKIdJKY\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 03 Jul 2019 07:06:04 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"error\": \"Bad Request\",\n    \"details\": [\n        {\n            \"reason\": \"You are not a member of this game or the game is closed\"\n        }\n    ]\n}"
+						},
+						{
+							"name": "Success - 204",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im1hamlkQGFrYmFyaS5jb20iLCJpZCI6IjVkMWI3MzhkYmU5NWZmNmU3ZWFiMWQ4YSIsImlhdCI6MTU2MjA4NDkyMiwiZXhwIjoxNTYyMTcxMzIyfQ.LX-OQ0weQ3RTVtpgg47KS4kVobCSYPr57rSzOIIe3SY",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{node_server}}/api/game/5d1c54decd19ad7d0e7495d3/left",
+									"host": [
+										"{{node_server}}"
+									],
+									"path": [
+										"api",
+										"game",
+										"5d1c54decd19ad7d0e7495d3",
+										"left"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin, Accept-Encoding"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "132"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"84-yD6HDf9RpigbtpABwCprNS3bTNc\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 03 Jul 2019 07:13:17 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"error\": \"Bad Request\",\n    \"details\": [\n        {\n            \"reason\": \"You are not a member of this game or the game is closed or you are the game creator\"\n        }\n    ]\n}"
+						},
+						{
+							"name": "Error - 401",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{node_server}}/api/game/5d1c50761786847bbc815610/left",
+									"host": [
+										"{{node_server}}"
+									],
+									"path": [
+										"api",
+										"game",
+										"5d1c50761786847bbc815610",
+										"left"
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin, Accept-Encoding"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "66"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"42-RjPHrN94+piiUdl8lxCuoILtGoQ\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 03 Jul 2019 07:05:00 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"error\": \"Unauthenticated\",\n    \"details\": [\n        {\n            \"reason\": \"Missing Token\"\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Invite users to game",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{}"
+						},
+						"url": {
+							"raw": "{{node_server}}/api/game/{{game_id}}/invite",
+							"host": [
+								"{{node_server}}"
+							],
+							"path": [
+								"api",
+								"game",
+								"{{game_id}}",
+								"invite"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Success - 204",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"user_id\" : \"5d1b82ca0e52d67126398709\"\n}"
+								},
+								"url": {
+									"raw": "{{node_server}}/api/game/{{game_id}}/invite",
+									"host": [
+										"{{node_server}}"
+									],
+									"path": [
+										"api",
+										"game",
+										"{{game_id}}",
+										"invite"
+									]
+								}
+							},
+							"status": "No Content",
+							"code": 204,
+							"_postman_previewlanguage": "plain",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"1f-POpc/951m75QkixLAwyJVVBE8gI\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 03 Jul 2019 10:27:08 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": null
+						},
+						{
+							"name": "Error - 422",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{}"
+								},
+								"url": {
+									"raw": "{{node_server}}/api/game/{{game_id}}/invite",
+									"host": [
+										"{{node_server}}"
+									],
+									"path": [
+										"api",
+										"game",
+										"{{game_id}}",
+										"invite"
+									]
+								}
+							},
+							"status": "Unprocessable Entity",
+							"code": 422,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin, Accept-Encoding"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "145"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"91-H8pnhAFPC6ew8395zErJU8Ch8xs\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 03 Jul 2019 10:16:33 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"error\": \"Unprocessable Entity\",\n    \"details\": [\n        {\n            \"user_id\": [\n                \"user_id should not be null or undefined\",\n                \"user_id must be a string\",\n                \"Invalid user id\"\n            ]\n        }\n    ]\n}"
+						},
+						{
+							"name": "Error - 404",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"user_id\" : \"5d1b82ca0e52d67126398709\"\n}"
+								},
+								"url": {
+									"raw": "{{node_server}}/api/game/{{game_id}}a/invite",
+									"host": [
+										"{{node_server}}"
+									],
+									"path": [
+										"api",
+										"game",
+										"{{game_id}}a",
+										"invite"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin, Accept-Encoding"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "34"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"22-F2QIBRvKG8Gj/7yHHKrAnaEzbgA\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 03 Jul 2019 10:21:20 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"error\": \"Not found\",\n    \"details\": []\n}"
+						},
+						{
+							"name": "Error - 401",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{node_server}}/api/game/{{game_id}}/invite",
+									"host": [
+										"{{node_server}}"
+									],
+									"path": [
+										"api",
+										"game",
+										"{{game_id}}",
+										"invite"
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin, Accept-Encoding"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "66"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"42-RjPHrN94+piiUdl8lxCuoILtGoQ\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 03 Jul 2019 10:15:14 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"error\": \"Unauthenticated\",\n    \"details\": [\n        {\n            \"reason\": \"Missing Token\"\n        }\n    ]\n}"
+						},
+						{
+							"name": "Error - 400",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"user_id\" : \"5d1b82ca0e52d67126398709\"\n}"
+								},
+								"url": {
+									"raw": "{{node_server}}/api/game/{{game_id}}/invite",
+									"host": [
+										"{{node_server}}"
+									],
+									"path": [
+										"api",
+										"game",
+										"{{game_id}}",
+										"invite"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin, Accept-Encoding"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "108"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"6c-UtCV8K2NMoXLOlTmIe/tr5ovoVk\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 03 Jul 2019 10:27:19 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"error\": \"Bad Request\",\n    \"details\": [\n        {\n            \"reason\": \"User already is a member of this game or the game is closed\"\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Kick user from a game",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"user_id\" : \"5d1b82ca0e52d67126398709\"\n}"
+						},
+						"url": {
+							"raw": "{{node_server}}/api/game/{{game_id}}/kick",
+							"host": [
+								"{{node_server}}"
+							],
+							"path": [
+								"api",
+								"game",
+								"{{game_id}}",
+								"kick"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Success - 204",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"user_id\" : \"5d1b82ca0e52d67126398709\"\n}"
+								},
+								"url": {
+									"raw": "{{node_server}}/api/game/{{game_id}}/kick",
+									"host": [
+										"{{node_server}}"
+									],
+									"path": [
+										"api",
+										"game",
+										"{{game_id}}",
+										"kick"
+									]
+								}
+							},
+							"status": "No Content",
+							"code": 204,
+							"_postman_previewlanguage": "plain",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"1f-POpc/951m75QkixLAwyJVVBE8gI\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 03 Jul 2019 10:46:19 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": null
+						},
+						{
+							"name": "Error - 400",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"user_id\" : \"5d1b82ca0e52d67126398709\"\n}"
+								},
+								"url": {
+									"raw": "{{node_server}}/api/game/{{game_id}}/kick",
+									"host": [
+										"{{node_server}}"
+									],
+									"path": [
+										"api",
+										"game",
+										"{{game_id}}",
+										"kick"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin, Accept-Encoding"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "109"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"6d-bV6rM9PRK+owKKd/Fhc7xWOHerA\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 03 Jul 2019 10:46:35 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"error\": \"Bad Request\",\n    \"details\": [\n        {\n            \"reason\": \"This user is not a member of this game or the game is closed\"\n        }\n    ]\n}"
+						},
+						{
+							"name": "Error - 401",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{node_server}}/api/game/{{game_id}}/kick",
+									"host": [
+										"{{node_server}}"
+									],
+									"path": [
+										"api",
+										"game",
+										"{{game_id}}",
+										"kick"
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin, Accept-Encoding"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "66"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"42-RjPHrN94+piiUdl8lxCuoILtGoQ\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 03 Jul 2019 10:39:44 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"error\": \"Unauthenticated\",\n    \"details\": [\n        {\n            \"reason\": \"Missing Token\"\n        }\n    ]\n}"
+						},
+						{
+							"name": "Error - 422",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{node_server}}/api/game/{{game_id}}/kick",
+									"host": [
+										"{{node_server}}"
+									],
+									"path": [
+										"api",
+										"game",
+										"{{game_id}}",
+										"kick"
+									]
+								}
+							},
+							"status": "Unprocessable Entity",
+							"code": 422,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin, Accept-Encoding"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "145"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"91-H8pnhAFPC6ew8395zErJU8Ch8xs\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 03 Jul 2019 10:39:54 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"error\": \"Unprocessable Entity\",\n    \"details\": [\n        {\n            \"user_id\": [\n                \"user_id should not be null or undefined\",\n                \"user_id must be a string\",\n                \"Invalid user id\"\n            ]\n        }\n    ]\n}"
+						},
+						{
+							"name": "Error - 404",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"user_id\" : \"5d1b7346be95ff6e7eab1d89\"\n}"
+								},
+								"url": {
+									"raw": "{{node_server}}/api/game/{{game_id}}1/kick",
+									"host": [
+										"{{node_server}}"
+									],
+									"path": [
+										"api",
+										"game",
+										"{{game_id}}1",
+										"kick"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin, Accept-Encoding"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "34"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"22-F2QIBRvKG8Gj/7yHHKrAnaEzbgA\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 03 Jul 2019 10:41:18 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"error\": \"Not found\",\n    \"details\": []\n}"
+						}
+					]
+				},
+				{
+					"name": "Add to score",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"score\" : 47\n}"
+						},
+						"url": {
+							"raw": "{{node_server}}/api/game/{{game_id}}/score",
+							"host": [
+								"{{node_server}}"
+							],
+							"path": [
+								"api",
+								"game",
+								"{{game_id}}",
+								"score"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Error - 400",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"score\" : 47\n}"
+								},
+								"url": {
+									"raw": "{{node_server}}/api/game/{{game_id}}/score",
+									"host": [
+										"{{node_server}}"
+									],
+									"path": [
+										"api",
+										"game",
+										"{{game_id}}",
+										"score"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin, Accept-Encoding"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "104"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"68-5zPioa8d0bbFWigB5ldbTKIdJKY\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 03 Jul 2019 11:15:57 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"error\": \"Bad Request\",\n    \"details\": [\n        {\n            \"reason\": \"You are not a member of this game or the game is closed\"\n        }\n    ]\n}"
+						},
+						{
+							"name": "Error - 422",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{node_server}}/api/game/{{game_id}}/score",
+									"host": [
+										"{{node_server}}"
+									],
+									"path": [
+										"api",
+										"game",
+										"{{game_id}}",
+										"score"
+									]
+								}
+							},
+							"status": "Unprocessable Entity",
+							"code": 422,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin, Accept-Encoding"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "153"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"99-HSiffGrDuG48wXK8MNV0+wtAmew\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 03 Jul 2019 10:57:25 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"error\": \"Unprocessable Entity\",\n    \"details\": [\n        {\n            \"score\": [\n                \"score should not be null or undefined\",\n                \"score must not be less than 1\",\n                \"score must be a number\"\n            ]\n        }\n    ]\n}"
+						},
+						{
+							"name": "Error - 401",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{node_server}}/api/game/{{game_id}}/score",
+									"host": [
+										"{{node_server}}"
+									],
+									"path": [
+										"api",
+										"game",
+										"{{game_id}}",
+										"score"
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin, Accept-Encoding"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "66"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"42-RjPHrN94+piiUdl8lxCuoILtGoQ\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 03 Jul 2019 10:56:47 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"error\": \"Unauthenticated\",\n    \"details\": [\n        {\n            \"reason\": \"Missing Token\"\n        }\n    ]\n}"
+						},
+						{
+							"name": "Success - 200",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"score\" : 100\n}"
+								},
+								"url": {
+									"raw": "{{node_server}}/api/game/{{game_id}}/score",
+									"host": [
+										"{{node_server}}"
+									],
+									"path": [
+										"api",
+										"game",
+										"{{game_id}}",
+										"score"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin, Accept-Encoding"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "300"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"12c-xgWBasGOJ5tpJVeP2XGalRma/3k\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 03 Jul 2019 11:14:53 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Success\",\n    \"data\": {\n        \"user_ids\": [\n            {\n                \"id\": \"5d1b738dbe95ff6e7eab1d8a\",\n                \"score\": 103\n            }\n        ],\n        \"_id\": \"5d1c82e57dc20b80d463a9ab\",\n        \"target_score\": 1000,\n        \"created_by\": \"5d1b738dbe95ff6e7eab1d8a\",\n        \"winner_id\": \"\",\n        \"status\": \"new\",\n        \"created_at\": \"2019-07-03T10:26:45.177Z\",\n        \"updated_at\": \"2019-07-03T11:14:47.986Z\",\n        \"__v\": 0\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Update  a game by its creator",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"target_score\" : 99\n}"
+						},
+						"url": {
+							"raw": "{{node_server}}/api/game/{{game_id}}",
+							"host": [
+								"{{node_server}}"
+							],
+							"path": [
+								"api",
+								"game",
+								"{{game_id}}"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Error - 401",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{node_server}}/api/game/{{game_id}}",
+									"host": [
+										"{{node_server}}"
+									],
+									"path": [
+										"api",
+										"game",
+										"{{game_id}}"
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin, Accept-Encoding"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "66"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"42-RjPHrN94+piiUdl8lxCuoILtGoQ\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 03 Jul 2019 11:42:30 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"error\": \"Unauthenticated\",\n    \"details\": [\n        {\n            \"reason\": \"Missing Token\"\n        }\n    ]\n}"
+						},
+						{
+							"name": "Success - 200",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"target_score\" : 99\n}"
+								},
+								"url": {
+									"raw": "{{node_server}}/api/game/5d1c56d6a934607d748f5921",
+									"host": [
+										"{{node_server}}"
+									],
+									"path": [
+										"api",
+										"game",
+										"5d1c56d6a934607d748f5921"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin, Accept-Encoding"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "296"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"128-Z5DUuxLEPrALrBH2bqpADGSoNlE\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 03 Jul 2019 11:43:59 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Success\",\n    \"data\": {\n        \"user_ids\": [\n            {\n                \"id\": \"5d1b738dbe95ff6e7eab1d8a\",\n                \"score\": 0\n            }\n        ],\n        \"_id\": \"5d1c56d6a934607d748f5921\",\n        \"target_score\": 99,\n        \"created_by\": \"5d1b738dbe95ff6e7eab1d8a\",\n        \"winner_id\": \"\",\n        \"status\": \"new\",\n        \"created_at\": \"2019-07-03T07:18:46.907Z\",\n        \"updated_at\": \"2019-07-03T07:18:46.907Z\",\n        \"__v\": 0\n    }\n}"
+						},
+						{
+							"name": "Error - 400",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"target_score\" : 99\n}"
+								},
+								"url": {
+									"raw": "{{node_server}}/api/game/{{game_id}}",
+									"host": [
+										"{{node_server}}"
+									],
+									"path": [
+										"api",
+										"game",
+										"{{game_id}}"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin, Accept-Encoding"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "105"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"69-prklSKbNnD6VruqhWcMObcTXOgU\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 03 Jul 2019 11:44:32 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"error\": \"Bad Request\",\n    \"details\": [\n        {\n            \"reason\": \"Game is closed or you are not the creator of the project\"\n        }\n    ]\n}"
+						}
+					]
+				}
+			]
+		}
+	]
+}

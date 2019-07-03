@@ -3,7 +3,7 @@ version: '3.5'
 services:
 
   ## --------------------------------------------------
-  ## | Web Server Php7.2.8-apache and required Extensions
+  ## | Web Server and application pm2 (node)
   ## --------------------------------------------------
   app:
     build:
@@ -18,7 +18,7 @@ services:
   ## --------------------------------------------------
   ## | Database Server (Mongo 4.0.10 )
   ## --------------------------------------------------
-  mongodb:
+  db:
     image: mongo:4.0.10-xenial
     ports:
       - "127.0.0.1:27019:27017"
