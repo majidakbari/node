@@ -3,9 +3,9 @@ import {HttpSuccess} from "../../../utils/httpSuccess";
 import {gameRepository} from "../../../repository/gameRepository";
 
 /**
- * @class kickUserFromGameAction
+ * @class addToScoreAction
  */
-export class kickUserFromGameAction {
+export class addToScoreAction {
 
     constructor(private repo: gameRepository) {
     }
@@ -20,29 +20,42 @@ export class kickUserFromGameAction {
                 return game;
             });
 
-            const userId = req.body.user_id;
+            const userId = req.app.get('user').id;
 
             if (!this.checkAccess(userId, gameRecord)) {
                 return res.status(400).json({
                     error: "Bad Request",
                     details: [
                         {
-                            "reason" : "This user is not a member of this game or the game is closed"
+                            "reason": "You are not a member of this game or the game is closed"
                         }
                     ]
                 });
             }
 
+
             if (gameRecord) {
+                let winner_id = gameRecord.winner_id;
+                let status = gameRecord.status;
                 let userIds = gameRecord.user_ids;
 
                 for (let index in userIds) {
                     if (userIds[index].id == userId) {
-                        userIds.splice(index, 1)
+                        userIds[index].score = userIds[index].score + req.body.score
+
+                        if (gameRecord.target_score ==  userIds[index].score) {
+                            winner_id = userId;
+                            status = 'closed';
+                        }
                     }
                 }
-                await this.repo.findOneAndUpdate(gameRecord._id, {user_ids: userIds});
-                return HttpSuccess(res, {}, 204);
+
+                await this.repo.findOneAndUpdate(gameRecord._id, {user_ids: userIds, winner_id: winner_id, status: status});
+                gameRecord.user_ids = userIds;
+                gameRecord.winner_id = winner_id;
+                gameRecord.status = status;
+
+                return HttpSuccess(res, gameRecord);
             }
 
         } catch (e) {

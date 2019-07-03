@@ -19,6 +19,8 @@ import {leaveGameAction} from "../http/controllers/game/leaveGameAction";
 import kickOrInviteUserToGameValidator from "../validation/game/kickOrInviteUserToGameValidator";
 import {inviteUserToGameAction} from "../http/controllers/game/inviteUserToGameAction";
 import {kickUserFromGameAction} from "../http/controllers/game/kickUserFromGameAction";
+import {addToScoreAction} from "../http/controllers/game/addToScoreAction";
+import addToScoreValidator from "../validation/game/addToScoreValidator";
 
 export default [
 
@@ -137,6 +139,17 @@ export default [
             validationMiddleware(kickOrInviteUserToGameValidator),
             (req: Request, res: Response) => {
                 new kickUserFromGameAction(new gameRepository()).invoke(req, res);
+            }
+        ]
+    },
+    {
+        path: "/api/game/:id/score",
+        method: "post",
+        handler: [
+            authMiddleware,
+            validationMiddleware(addToScoreValidator),
+            (req: Request, res: Response) => {
+                new addToScoreAction(new gameRepository()).invoke(req, res);
             }
         ]
     },
