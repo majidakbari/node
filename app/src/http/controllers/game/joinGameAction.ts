@@ -25,7 +25,7 @@ export class joinGameAction {
                     error: "Bad Request",
                     details: [
                         {
-                            "reason" : "You are already a member of this game"
+                            "reason" : "You are already a member of this game or the game is closed"
                         }
                     ]
                 });
@@ -62,7 +62,11 @@ export class joinGameAction {
                 authorized = false;
             }
         });
-   
+
+        if (gameRecord.status == 'closed') {
+            authorized = false;
+        }
+
         return authorized;
     }
 }
