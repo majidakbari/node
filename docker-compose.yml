@@ -13,7 +13,7 @@ services:
       - "127.0.0.1:9090:${NODE_PORT}"
     restart: always
     depends_on:
-      - mongodb
+      - db
 
   ## --------------------------------------------------
   ## | Database Server (Mongo 4.0.10 )
